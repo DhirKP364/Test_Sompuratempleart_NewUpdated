@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gallery</title>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+
+        /* ================= GALLERY ================= */
+
+        .gallery-img{
+
+            width:100%;
+            height:350px;
+            object-fit:cover;
+
+            border-radius:15px;
+
+            transition:0.4s;
+            cursor:pointer;
+
+            box-shadow:0 5px 15px rgba(0,0,0,0.15);
+
+        }
+
+        .gallery-img:hover{
+
+            transform:scale(1.05);
+
+        }
+
+        /* ================= TITLE ================= */
+
+        .section-title{
+
+            color:#d89b2b;
+            font-size:55px;
+            font-weight:700;
+
+        }
+
+        #service-title{
+
+            font-size:40px;
+            margin-top:20px;
+            margin-bottom:25px;
+
+        }
+
+        /* ================= DESCRIPTION ================= */
+
+        #service-desc{
+
+            max-width:1100px;
+
+            margin:auto;
+
+            text-align:left;
+
+            line-height:35px;
+
+            font-size:18px;
+
+            color:#444;
+
+            margin-top:20px;
+            margin-bottom:40px;
+
+        }
+
+        .point-line{
+
+            margin-bottom:12px;
+
+            padding-left:10px;
+
+        }
+
+        /* ================= FULLSCREEN ================= */
+
+        .fullscreen{
+
+            position:fixed;
+
+            top:0;
+            left:0;
+
+            width:100%;
+            height:100%;
+
+            background:rgba(0,0,0,0.95);
+
+            display:none;
+
+            align-items:center;
+            justify-content:center;
+
+            z-index:9999;
+
+        }
+
+        .fullscreen img{
+
+            max-width:90%;
+            max-height:85%;
+
+            border-radius:15px;
+
+        }
+
+        /* ================= CLOSE BUTTON ================= */
+
+        .close-btn{
+
+            position:absolute;
+
+            top:20px;
+            right:30px;
+
+            background:#fff;
+
+            border:none;
+
+            padding:10px 20px;
+
+            border-radius:30px;
+
+            font-weight:600;
+
+            transition:0.3s;
+
+        }
+
+        .close-btn:hover{
+
+            background:#d89b2b;
+            color:#fff;
+
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:768px){
+
+            .section-title{
+
+                font-size:40px;
+
+            }
+
+            #service-title{
+
+                font-size:28px;
+
+            }
+
+            #service-desc{
+
+                font-size:16px;
+                line-height:30px;
+
+            }
+
+            .gallery-img{
+
+                height:250px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <div id="header"></div>
+
+    <!-- MAIN -->
+
+    <div class="container py-5" style="margin-top:80px;">
+
+        <!-- TITLE -->
+
+        <h2 class="text-center section-title mb-3">
+            Gallery
+        </h2>
+
+        <!-- DYNAMIC TITLE -->
+
+        <h4 id="service-title" class="text-center"></h4>
+
+        <!-- DYNAMIC DESCRIPTION -->
+
+        <div id="service-desc"></div>
+
+        <!-- IMAGES -->
+
+        <div class="row g-4" id="gallery"></div>
+
+    </div>
+
+    <!-- FULLSCREEN -->
+
+    <div class="fullscreen" id="fullscreen">
+
+        <button class="close-btn" onclick="closeImage()">
+            Back
+        </button>
+
+        <img id="fullImg">
+
+    </div>
+
+    <!-- FOOTER -->
+
+    <div id="footer"></div>
+
+    <!-- SCRIPT -->
+
+    <script src="js/script.js"></script>
+
+    <script>
+
+        /* ================= IMAGES ================= */
+
+        const allImages = {
+
+            /* PROJECT 1 */
+
+            proj1:[
+
+                "images/projects/project1/project1_Sub1.jpeg",
+                "images/projects/project1/project1_Sub2.jpeg",
+                "images/projects/project1/project1_Sub3.jpeg",
+                "images/projects/project1/project1_Sub4.jpeg"
+
+            ],
+
+            /* PROJECT 2 */
+
+            proj2:[
+
+                "images/projects/project2/project2_Main.jpeg"
+
+            ],
+
+            /* PROJECT 3 */
+
+            proj3:[
+
+                "images/projects/project3/project3_Sub1.jpeg",
+                "images/projects/project3/project3_Sub2.jpeg"
+
+            ],
+
+            /* PROJECT 4 */
+
+            proj4:[
+
+                "images/projects/project4/project4_Main.jpeg"
+
+            ],
+
+            /* PROJECT 5 */
+
+            proj5:[
+
+                "images/projects/project5/project5_Main.jpeg",
+                "images/projects/project5/project5_Sub1.jpeg",
+                "images/projects/project5/project5_Sub2.jpeg"
+
+            ],
+
+             /* PROJECT 6 */
+
+            proj6:[
+
+                "images/projects/project6/project6_Main.jpeg",
+                "images/projects/project6/project6_Sub1.jpeg"
+
+            ],
+
+              proj7:[
+
+                "images/projects/project7/project7_Main.jpeg",
+                "images/projects/project7/project7_Sub1.jpeg",
+                "images/projects/project7/project7_Sub2.jpeg",
+                "images/projects/project7/project7_Sub3.jpeg"
+
+            ],
+
+                 proj8:[
+
+                "images/projects/project8/project8_Main.jpeg",
+                "images/projects/project8/project8_Sub1.jpeg",
+                "images/projects/project8/project8_Sub2.jpeg",
+                "images/projects/project8/project8_Sub3.jpeg",
+                "images/projects/project8/project8_Sub4.jpeg",
+                "images/projects/project8/project8_Sub5.jpeg",
+                "images/projects/project8/project8_Sub6.jpeg"
+
+            ],
+
+                proj9:[
+
+                "images/projects/project9/project9_Main.jpeg",
+                "images/projects/project9/project9_Sub1.jpeg",
+                "images/projects/project9/project9_Sub2.jpeg",
+                "images/projects/project9/project9_Sub3.jpeg",
+                "images/projects/project9/project9_Sub4.jpeg"
+
+            ],
+
+         proj10:[
+
+    "images/projects/project10/project10_Main.jpeg",
+    "images/projects/project10/project10_Sub1.jpeg",
+    "images/projects/project10/project10_Sub2.jpeg"
+
+],
+
+   proj11:[
+
+                "images/projects/project11/project11_Main.jpeg",
+                "images/projects/project11/project11_Sub1.jpeg",
+                "images/projects/project11/project11_Sub2.jpeg",
+                "images/projects/project11/project11_Sub3.jpeg",
+                "images/projects/project11/project11_Sub4.jpeg",
+                "images/projects/project11/project11_Sub5.jpeg",
+                "images/projects/project11/project11_Sub6.jpeg"
+
+            ],
+
+              proj12:[
+
+                "images/projects/project12/project12_Main.jpeg"
+
+            ],
+
+
+
+
+            
+            /* SERVICES 1 */
+
+            Serv1:[
+
+                "images/services/service1/service1_Sub1.jpeg",
+                "images/services/service1/service1_Sub1.jpeg",
+                "images/services/service1/service1_Sub1.jpeg"
+
+            ],
+
+             /* SERVICES 2 */
+
+            Serv2:[
+
+                "images/services/service2/service2_Main.jpeg",
+                "images/services/service2/service2_Sub1.jpeg",
+                "images/services/service2/service2_Sub2.jpeg",
+                "images/services/service2/service2_Sub3.jpeg",
+                "images/services/service2/service2_Sub4.jpeg",
+                "images/services/service2/service2_Sub5.jpeg",
+                "images/services/service2/service2_Sub6.jpeg",
+                "images/services/service2/service2_Sub7.jpeg"
+
+
+            ],
+
+              /* SERVICES 3 */
+
+            Serv3:[
+
+                "images/services/service3/service3_Main.jpeg",
+                "images/services/service3/service3_Sub1.jpeg",
+                "images/services/service3/service3_Sub2.jpeg",
+                "images/services/service3/service3_Sub3.jpeg",
+                "images/services/service3/service3_Sub4.jpeg",
+                "images/services/service3/service3_Sub5.jpeg",
+                "images/services/service3/service3_Sub6.jpeg"
+
+            ],
+
+                          /* SERVICES 4 */
+
+              Serv4:[
+
+               " images/services/service4/service4_Main.jpeg",
+                "images/services/service4/service4_Sub1.jpeg",
+                "images/services/service4/service4_Sub2.jpeg",
+                "images/services/service4/service4_Sub3.jpeg",
+                "images/services/service4/service4_Sub4.jpeg",
+                "images/services/service4/service4_Sub5.jpeg",
+                "images/services/service4/service4_Sub6.jpeg"
+
+            ],
+
+                               /* SERVICES 5 */
+
+              Serv5:[
+
+               " images/services/service5/service5_Main.jpeg",
+                "images/services/service5/service5_Sub1.jpeg",
+                "images/services/service5/service5_Sub2.jpeg",
+                "images/services/service5/service5_Sub3.jpeg",
+                "images/services/service5/service5_Sub4.jpeg",
+                "images/services/service5/service5_Sub5.jpeg",
+                "images/services/service5/service5_Sub6.jpeg"
+
+            ],
+
+
+
+
+            /* DEFAULT */
+
+            default:[
+
+                "images/gallery_default/Temp8.jpeg",
+                "images/gallery_default/Temp9.jpeg",
+                "images/gallery_default/Temp10.jpeg",
+                "images/gallery_default/Temp11.jpeg",
+                "images/gallery_default/Temp12.jpeg"
+
+            ]
+
+        };
+
+
+        /* ================= DETAILS ================= */
+
+        const details = {
+
+            /* PROJECT 1 */
+
+            proj1:{
+
+                title:"Himmatnagar Railway Station",
+
+                desc:`
+
+Traditional architecture railway station project.
+Heritage style railway architecture.
+Premium traditional stone work completed.
+Architecture based railway construction.
+
+`
+
+            },
+
+            /* PROJECT 2 */
+
+            proj2:{
+
+                title:"Home Temple Design",
+
+                desc:`
+
+Home Temple (SHIHASHAN) in Pink Stone.
+CNC Machine carving work completed.
+Architecture and Contract based project.
+Traditional temple finishing work used.
+
+`
+
+            },
+
+            /* PROJECT 3 */
+
+            proj3:{
+
+                title:"JAIN DERASSAR BABALPURA NR, AHMEDABAD GUJARAT.",
+
+                desc:`
+
+Built in Himatnagar White Sand-Stone.
+Contract & Architecture Based Project.
+Lead by Ar. Sanjaybhai Rameshchandra Sompura.
+Hand-Carving work completed with 100+ craftsmen.
+Project completed in 10 years.
+Temple work given by Shri Vijay Muni Shah Maharaj.
+
+`
+
+            },
+
+            /* PROJECT 4 */
+
+            proj4:{
+
+                title:"ITS HANUMANJI CHATRI NR, IDAR.",
+
+                desc:`
+
+Traditional Hanumanji Chatri Design.
+Premium architecture temple work.
+Traditional stone carving completed.
+Elegant temple finishing style.
+
+`
+
+            },
+
+            /* PROJECT 5 */
+
+            proj5:{
+
+                title:"CHATRI TALOD",
+
+                desc:`
+
+Traditional Chatri temple architecture.
+Stone carving and finishing work.
+Heritage style temple structure.
+Premium traditional design concept.
+
+`
+
+            },
+
+            /* PROJECT 6 */
+
+proj6:{
+
+    title:"GOGA MAHARAJ MANDIR CHANDRALA",
+
+    desc:`
+
+Traditional temple architecture.
+Stone carving design work.
+Premium finishing and heritage style.
+
+`
+
+},
+
+  /* PROJECT 7 */
+
+proj7:{
+
+    title:"MAHAKALI MATAJI MANDIR DELHI",
+
+    desc:`
+
+
+`
+
+},
+
+ /* PROJECT 8 */
+
+proj8:{
+
+    title:"SHIV MANDIR & MATAJI MANDIR BHUTIYA NR,IDAR. ",
+
+    desc:`
+    IT WAS FULLY DETAIL PLAN FOR CUSTOMER.
+    WE ARE HIRED AS AN ARCHITECT OF THIS TEMPLE.
+
+`
+
+},
+ /* PROJECT 9 */
+
+proj9:{
+
+    title:"SHRI MATAJI MANDIR NR,SURAT (AS AN ARCHITECT & CONTRACTOR)",
+
+    desc:`
+    IT WAS MORE DETAIL DESIGN PLAN.
+    IN THIS PLAN DESIGNS ARE MORE AS PER CUSTOMER REQUIREMNET.
+    IT WAS BIG PROJECT.
+    IT WAS IN PENDING BECAUSE IN THIS WE ARE ALREADY HIRED AS AN ARCHITECT BUT CUSTOMER ARE SAYING TO COMPLETE THIS BY OUR TEAM ONLY.
+    SOON IT WILL BE REVEALED.
+    THIS IS FACTORY TEMPLE IN RESIDENCY OF WORKING TEAM
+
+
+`
+
+},
+
+/* PROJECT 10 */
+
+proj10:{
+
+    title:"SHRI MATAJI MANDIR & SHIVJI MANDIR",
+
+    desc:`
+
+IT WAS MORE DETAIL DESIGN PLAN.
+IN THIS PLAN DESIGNS ARE MORE AS PER CUSTOMER REQUIREMNET.
+IT WAS BIG PROJECT WITH PREMIUM TEMPLE ELEVATION AND DESIGN WORK.
+IT WAS IN PENDING BECAUSE IN THIS WE ARE ALREADY HIRED AS AN ARCHITECT BUT CUSTOMER ARE SAYING TO COMPLETE THIS BY OUR TEAM ONLY.
+SOON IT WILL BE REVEALED.
+
+`
+
+},
+
+/* PROJECT 11 */
+
+proj11:{
+
+    title:"AT NR,HIMATNAGR (AS AN ARCHITECT & CONTRACTOR) ",
+
+    desc:`
+
+IT WAS FULLY DETAIL PLAN FOR CUSTOMER.
+IT WAS DESIGN BY OUR COMPANY
+THIS PROJEC TENDER ALSO TAKEN BY OUR COMPANY.
+IN THIS PROJECT WE ARE HIRED AS ARCHITECT & CONTRACTOR.
+
+
+`
+
+},
+
+/* PROJECT 11 */
+
+proj12:{
+
+    title:"SMALL CHATRI OF SHIV MANDIR NR,PRATIJ GUJ (AS AN ARCHITECT & CONTRACTOR)",
+
+    desc:`
+
+
+
+`
+
+},
+
+
+
+
+            /* SERVICE 1 */
+
+            Serv1:{
+
+                title:"2D & 3D Drawing",
+
+                desc:`
+
+Traditional temple architecture drawing.
+Modern + Traditional design concepts.
+2D and 3D temple planning.
+Professional architecture solutions.
+
+`
+
+            },
+
+             /* SERVICE 2*/
+
+             Serv2:{
+
+                title:"Temple Architecture Design",
+
+                desc:`
+
+Hindu Temple Design
+Jain Temple Design
+Traditional Nagar Style Temples
+2D & 3D Temple Planning
+Vastu-Based Temple Layouts
+
+`
+
+            },
+
+             /* SERVICE 3 */
+
+                  Serv3:{
+
+                title:"Temple Construction",
+
+                desc:`
+
+Full Temple Construction
+RCC Structure Work
+Stone Temple Construction
+Turnkey Temple Projects
+On-Site Supervision
+
+`
+
+            },
+
+              /* SERVICE 4 */
+
+                  Serv4:{
+
+                title:"Marble & Stone Carving",
+
+                desc:`
+
+Hand Carving
+Pillar Design
+Dome Carving
+Mandap Design
+Decorative Stone Work
+
+`
+
+            },
+
+                 /* SERVICE 5 */
+
+                  Serv5:{
+
+                title:"CNC Marble Carving",
+
+                desc:`
+
+3D Marble Carving
+
+Temple Pillar Design
+
+Decorative Floral Patterns
+
+Religious Artwork
+
+Customized Marble Designs
+
+`
+
+            },
+
+            /* DEFAULT */
+
+            default:{
+
+                title:"Explore our latest projects Gallery.",
+
+                desc:`
+
+
+
+`
+
+            }
+
+        };
+
+
+        /* ================= GET TYPE ================= */
+
+        const params = new URLSearchParams(window.location.search);
+
+        let type = params.get("type");
+
+        /* DEFAULT LOAD */
+
+        if(!type || !allImages[type]){
+
+            type = "default";
+
+        }
+
+        /* ================= PROJECT DETAILS ================= */
+
+        const project = details[type];
+
+        /* TITLE */
+
+        document.getElementById("service-title").innerText =
+        project.title;
+
+        /* DESCRIPTION */
+
+        const descBox = document.getElementById("service-desc");
+
+        /* SPLIT INTO LINES */
+
+        const lines = project.desc.trim().split("\n");
+
+        descBox.innerHTML = "";
+
+        /* CREATE BULLET POINTS */
+
+        lines.forEach(line => {
+
+            if(line.trim() != ""){
+
+                descBox.innerHTML += `
+
+                    <div class="point-line">
+
+                        ◆ ${line.trim()}
+
+                    </div>
+
+                `;
+
+            }
+
+        });
+
+        /* ================= LOAD IMAGES ================= */
+
+        const container = document.getElementById("gallery");
+
+        allImages[type].forEach(img => {
+
+            container.innerHTML += `
+
+                <div class="col-lg-4 col-md-6">
+
+                    <img src="${img}"
+                         class="img-fluid gallery-img"
+                         onclick="openImage('${img}')">
+
+                </div>
+
+            `;
+
+        });
+
+        /* ================= FULLSCREEN ================= */
+
+        function openImage(src){
+
+            document.getElementById("fullscreen").style.display = "flex";
+
+            document.getElementById("fullImg").src = src;
+
+        }
+
+        function closeImage(){
+
+            document.getElementById("fullscreen").style.display = "none";
+
+        }
+
+    </script>
+
+</body>
+</html>

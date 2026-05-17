@@ -1,0 +1,657 @@
+
+/* FULL PAGE FIX */
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+#footer {
+    margin-top: auto;
+}
+
+/* MAIN CONTENT WRAPPER */
+.main-content {
+    flex: 1;
+}
+
+  
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+.custom-navbar {
+    background: rgba(255, 255, 255, 0.15); /* milky white */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+
+    padding-top: 7px;
+    padding-bottom: 3px;
+    transition: all 0.3s ease;
+    .custom-navbar {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+}
+
+/* SCROLL EFFECT */
+.custom-navbar.scrolled {
+    background: hsl(0, 0%, 100%);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* ================= LOGO ================= */
+.navbar-brand img {
+    height: 45px;
+}
+
+.navbar-brand span {
+    font-weight: 600;
+    font-size: 22px;
+    color: #7b1d1d;
+    transition: 0.3s;
+    font-family: 'Playfair Display', serif;
+     letter-spacing: 1px;
+}
+
+/* SCROLL LOGO COLOR */
+.custom-navbar.scrolled .navbar-brand span {
+    color: #222;
+}
+
+/* ================= MENU ================= */
+.nav-link {
+    color:#000 !important;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* HOVER UNDERLINE */
+.nav-link::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #ffcc00;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transition: 0.3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ACTIVE LINK */
+.nav-link.active {
+    color: #ffcc00 !important;
+}
+
+/* SCROLL MENU COLOR */
+.custom-navbar.scrolled .nav-link {
+     color: #000 !important;
+}
+
+.custom-navbar.scrolled .nav-link.active {
+    color: #ffcc00 !important;
+}
+
+.nav-link:hover {
+    color: #ffcc00 !important;
+}
+
+/* ================= BUTTON ================= */
+.contact-btn {
+    background: rgba(255,255,255,0.9);
+    border: none;
+    padding: 8px 22px;
+    border-radius: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.contact-btn:hover {
+    background: #fff;
+}
+
+/* ================= TOGGLER ================= */
+.navbar-toggler {
+    border: none;
+    filter: invert(1);
+}
+
+.custom-navbar.scrolled .navbar-toggler {
+    filter: none;
+}
+
+/* HERO NEW CSS */
+
+/* ================= WIX HERO ================= */
+.hero {
+ min-height: 100vh;
+    /* 👇 ADD IMAGE + GRADIENT BOTH */
+    background:
+        linear-gradient(
+            120deg,
+           rgba(20,10,5,0.9),
+        /* rgba(120,20,20,0.75), */
+        rgba(212,175,55,0.6),
+        rgba(255,223,120,0.4)
+        ),
+        url('../images/IMG1.png')
+        
+        ; /* YOUR IMAGE */
+
+    background-size: cover;
+    background-position: center;
+
+    color: #fff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero h1 {
+    text-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
+
+/* ANIMATION */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* RIGHT CURVE SHAPE */
+.hero::after {
+    content: "";
+    position: absolute;
+    right: -150px;
+    top: 0;
+    width: 500px;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.15), transparent);
+    border-radius: 50%;
+}
+
+/* TEXT STYLE */
+.hero h1 {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-top: 15px;
+    color: #ddd;
+}
+
+/* BUTTON */
+.hero .btn-warning {
+    background: #fff;
+    color: #000;
+    border-radius: 30px;
+    padding: 10px 25px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.hero .btn-warning:hover {
+    transform: translateX(5px);
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .navbar-brand span {
+        font-size: 14px;
+    }
+
+    .navbar-brand img {
+        height: 35px;
+    }
+
+}
+
+/* ================= ABOUT SECTION ================= */
+.about-section {
+    background: #f8f9fa;
+}
+
+/* TITLE */
+.about-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #e8af45;
+    margin-bottom: 20px;
+}
+
+/* TEXT */
+.about-text {
+    color: #555;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+/* BUTTON */
+.about-btn {
+    background: #e8af45;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 30px;
+    margin-top: 10px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.about-btn:hover {
+    background: #1f3512;
+}
+
+/* IMAGES */
+.about-img-main img {
+    border: 8px solid #e8af45;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.about-img-small {
+    position: absolute;
+    bottom: -40px;
+    right: 20px;
+    width: 60%;
+}
+
+.about-img-small img {
+    border: 6px solid #e8af45;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ================= SLIDER ================= */
+.photo-slider {
+    overflow: hidden;
+    background: #e8af45;
+    padding: 20px 0;
+     margin-top: 10px;
+}
+
+/* TRACK */
+.slider-track {
+    display: flex;
+    width: calc(250px * 10); /* 5 images x 2 */
+    animation: scroll 20s linear infinite;
+}
+
+/* IMAGES */
+.slider-track img {
+    width: 250px;
+    height: 160px;
+    object-fit: cover;
+    margin: 0 10px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.slider-track img:hover {
+    transform: scale(1.08);
+}
+
+.photo-slider:hover .slider-track {
+    animation-play-state: paused;
+}
+/* ANIMATION */
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ================= PROJECTS ================= */
+.projects-section {
+    background: #f8f9fa;
+}
+
+/* TITLE */
+.section-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #e8af45;
+}
+
+/* DIVIDER */
+.divider {
+    width: 80px;
+    height: 3px;
+    background: #e8af45;
+    margin: 10px auto 0;
+}
+
+/* CARD */
+.project-card {
+    display: flex;
+    gap: 20px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    align-items: center;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+/* IMAGE */
+.project-img img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* CONTENT */
+.project-content h4 {
+    font-size: 20px;
+    font-weight: 600;
+    color: #e8af45;
+}
+
+.project-content p {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0;
+}
+
+/* BUTTON */
+.project-btn {
+    background: #e8af45;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.project-btn:hover {
+    background: #e8af45;
+}
+
+
+
+/* ================= SERVICES ================= */
+.service-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    transition: 0.3s;
+    border: 1px solid #eee;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.service-card img {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.service-card h4 {
+    color: #e8af45;
+    font-weight: 600;
+}
+
+.service-btn {
+    background: #e8af45;
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 25px;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.service-btn:hover {
+    background: #000;
+}
+
+
+
+/* FIX SERVICE IMAGE SIZE */
+.service-img {
+    height: 220px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.service-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 🔥 IMPORTANT */
+}
+
+/* CARD FIX */
+.service-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* CONTENT ALIGN */
+.service-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.service-img img {
+    transition: 0.4s;
+}
+
+.service-card:hover img {
+    transform: scale(1.1);
+}
+
+
+
+
+/* ----------------------------------
+ DARK  MODE-------------------------------------------- */
+
+/* THEME BUTTON */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+/* LIGHT MODE (DEFAULT) */
+body {
+    background: #ffffff;
+    color: #000;
+    transition: 0.3s;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    background: #121212;
+    color: #fff;
+}
+
+/* NAVBAR */
+body.dark-mode .custom-navbar {
+    background: #1e1e1e !important;
+}
+
+/* CARDS */
+body.dark-mode .service-card,
+body.dark-mode .project-card,
+body.dark-mode .contact-box {
+    background: #1e1e1e;
+    color: #fff;
+}
+
+/* TEXT */
+body.dark-mode p {
+    color: #ccc;
+}
+
+/* SECTION BG */
+body.dark-mode .services-section,
+body.dark-mode .contact-section {
+    background: #181818;
+}
+
+/* BUTTON */
+body.dark-mode .project-btn,
+body.dark-mode .service-btn {
+    background: #e8af45;
+    color: #000;
+}
+
+
+/* ================= THEME BUTTON ================= */
+.theme-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    transform: rotate(20deg) scale(1.2);
+}
+
+/* ================= LIGHT MODE ================= */
+body {
+    background: #ffffff;
+    color: #000;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* ================= DARK MODE ================= */
+body.dark-mode {
+    background: #121212;
+    color: #ffffff;
+}
+
+/* NAVBAR */
+body.dark-mode .custom-navbar {
+    background: #1e1e1e !important;
+    border-bottom: 1px solid #333;
+}
+
+body.dark-mode .custom-navbar.scrolled {
+    background: #1e1e1e !important;
+}
+
+/* LOGO TEXT */
+body.dark-mode .navbar-brand span {
+    color: #fff;
+}
+
+/* MENU */
+body.dark-mode .nav-link {
+    color: #ddd !important;
+}
+
+body.dark-mode .nav-link:hover {
+    color: #ffcc00 !important;
+}
+
+/* CARDS */
+body.dark-mode .service-card,
+body.dark-mode .project-card {
+    background: #1e1e1e;
+    color: #fff;
+    border: 1px solid #333;
+}
+
+/* SECTIONS */
+body.dark-mode .services-section,
+body.dark-mode .projects-section,
+body.dark-mode .about-section {
+    background: #181818;
+}
+
+/* TEXT */
+body.dark-mode p {
+    color: #ccc;
+}
+
+/* BUTTONS */
+body.dark-mode .service-btn,
+body.dark-mode .project-btn {
+    background: #e8af45;
+    color: #000;
+}
+
+/* CONTACT BUTTON */
+body.dark-mode .contact-btn {
+    background: #333;
+    color: #fff;
+}
+
+/* FOOTER */
+body.dark-mode footer {
+    background: #111;
+    color: #aaa;
+}
+
+
+/* 🔥 FIX: DARK MODE SCROLL TEXT ISSUE */
+
+/* NAV LINKS */
+body.dark-mode .custom-navbar.scrolled .nav-link {
+    color: #fff !important;
+}
+
+/* LOGO TEXT */
+body.dark-mode .custom-navbar.scrolled .navbar-brand span {
+    color: #fff !important;
+}
+
+/* TOGGLER ICON */
+body.dark-mode .custom-navbar.scrolled .navbar-toggler {
+    filter: invert(1);
+}
+
+
+/* 🔥 FIX GALLERY TEXT COLOR IN DARK MODE */
+
+body.dark-mode .text-muted {
+    color: #ccc !important;
+}
+
+body.dark-mode #service-desc {
+    color: #ccc !important;
+}
+
+
+
+
+#formMessage {
+    transition: opacity 0.5s ease;
+}
