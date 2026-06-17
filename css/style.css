@@ -655,3 +655,131 @@ body.dark-mode #service-desc {
 #formMessage {
     transition: opacity 0.5s ease;
 }
+
+
+
+/* ===========================
+   SOMPURA PREMIUM NAVBAR
+=========================== */
+
+
+/* ==================================
+   THIN TRANSPARENT NAVBAR
+================================== */
+
+.custom-navbar{
+    background: transparent !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: all 0.4s ease;
+    z-index: 9999;
+}
+
+/* Transparent Container */
+
+.navbar-box{
+    background: transparent;
+    border-radius: 50px;
+    padding: 4px 15px;
+    box-shadow: none;
+    transition: all 0.4s ease;
+}
+
+/* On Scroll */
+
+.custom-navbar.scrolled .navbar-box{
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+}
+
+/* Logo */
+
+.logo-img{
+    height: 38px;
+    width: auto;
+}
+
+.brand-text{
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-left: 8px;
+    transition: .3s;
+}
+
+.custom-navbar.scrolled .brand-text{
+    color: #8B1E1E;
+}
+
+/* Menu */
+
+.nav-link{
+    color: white !important;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 0 8px;
+    text-transform: uppercase;
+}
+
+.custom-navbar.scrolled .nav-link{
+    color: #222 !important;
+}
+
+.nav-link.active{
+    color: #d4af37 !important;
+}
+
+.nav-link:hover{
+    color: #d4af37 !important;
+}
+
+/* Contact Button */
+
+.contact-btn{
+    background: transparent;
+    border: 2px solid #d4af37;
+    color: white !important;
+    border-radius: 30px;
+    padding: 6px 18px;
+    font-size: 14px;
+}
+
+.custom-navbar.scrolled .contact-btn{
+    background: white;
+    color: #222 !important;
+}
+
+/* Theme */
+
+.theme-btn{
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+.custom-navbar.scrolled .theme-btn{
+    color: black;
+}
+
+/* Mobile */
+
+@media(max-width:991px){
+
+    .brand-text{
+        font-size:18px;
+    }
+
+    .logo-img{
+        height:32px;
+    }
+
+    .navbar-box{
+        background:white;
+    }
+
+    .nav-link{
+        color:#222 !important;
+    }
+}
