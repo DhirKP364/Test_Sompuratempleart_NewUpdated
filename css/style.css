@@ -783,3 +783,30 @@ body.dark-mode #service-desc {
         color:#222 !important;
     }
 }
+
+
+.navbar-white .navbar-box{
+    background: #fff !important;
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+}
+
+.navbar-white .brand-text{
+    color:#8B1E1E !important;
+}
+
+.navbar-white .nav-link{
+    color:#222 !important;
+}
+
+.navbar-white .nav-link:hover,
+.navbar-white .nav-link.active{
+    color:#d4af37 !important;
+}
+
+.navbar-white .contact-btn{
+    color:#222 !important;
+}
+
+.navbar-white .theme-btn{
+    color:#222 !important;
+}
