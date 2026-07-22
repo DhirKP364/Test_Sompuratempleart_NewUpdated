@@ -39,33 +39,33 @@ async function init() {
 
 }
 
-// ================= DARK MODE =================
-function setupTheme() {
+// // ================= DARK MODE =================
+// function setupTheme() {
 
-    const toggleBtn = document.getElementById("theme-toggle");
-    if (!toggleBtn) return;
+//     const toggleBtn = document.getElementById("theme-toggle");
+//     if (!toggleBtn) return;
 
-    // LOAD SAVED THEME
-    if (localStorage.getItem("theme") === "dark") {
-        document.body.classList.add("dark-mode");
-        toggleBtn.innerText = "☀️";
-    }
+//     // LOAD SAVED THEME
+//     if (localStorage.getItem("theme") === "dark") {
+//         document.body.classList.add("dark-mode");
+//         toggleBtn.innerText = "☀️";
+//     }
 
-    // CLICK EVENT
-    toggleBtn.addEventListener("click", () => {
+//     // CLICK EVENT
+//     toggleBtn.addEventListener("click", () => {
 
-        document.body.classList.toggle("dark-mode");
+//         document.body.classList.toggle("dark-mode");
 
-        if (document.body.classList.contains("dark-mode")) {
-            localStorage.setItem("theme", "dark");
-            toggleBtn.innerText = "☀️";
-        } else {
-            localStorage.setItem("theme", "light");
-            toggleBtn.innerText = "🌙";
-        }
+//         if (document.body.classList.contains("dark-mode")) {
+//             localStorage.setItem("theme", "dark");
+//             toggleBtn.innerText = "☀️";
+//         } else {
+//             localStorage.setItem("theme", "light");
+//             toggleBtn.innerText = "🌙";
+//         }
 
-    });
-}
+//     });
+// }
 
 // ================= DEFAULT IMAGE =================
 document.addEventListener("DOMContentLoaded", function () {
