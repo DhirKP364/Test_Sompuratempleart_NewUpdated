@@ -300,7 +300,7 @@ body {
     height: 160px;
     object-fit: cover;
     margin: 0 10px;
-    border-radius: 10px;
+   /* border-radius: 10px;  (Change On 23-8-26)*/ 
     transition: 0.3s;
 }
 
